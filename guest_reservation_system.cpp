@@ -33,17 +33,24 @@ int main() {
     ReservationSystem system;
 
     string guestName, startDate, endDate;
+    char choice;
 
-    cout << "Enter guest name: ";
-    getline(cin, guestName);
+    do {
+        cout << "Enter guest name: ";
+        getline(cin, guestName);
 
-    cout << "Enter start date (YYYY-MM-DD): ";
-    getline(cin, startDate);
+        cout << "Enter start date (YYYY-MM-DD): ";
+        getline(cin, startDate);
 
-    cout << "Enter end date (YYYY-MM-DD): ";
-    getline(cin, endDate);
+        cout << "Enter end date (YYYY-MM-DD): ";
+        getline(cin, endDate);
 
-    system.makeReservation(guestName, startDate, endDate);
+        system.makeReservation(guestName, startDate, endDate);
+
+        cout << "Do you want to make another reservation? (y/n): ";
+        cin >> choice;
+        cin.ignore(); // to consume the newline character left in the input buffer
+    } while (choice == 'y' || choice == 'Y');
 
     system.displayReservations();
 
